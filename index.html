@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Overview</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="x-icon/image" href="./assets/img/favicon.ico">
+
+</head>
+<body onload="init()">
+    <header>
+        <div class="title_div_header">
+            <img class="logo_header" src="./assets/img/logo.png">
+            <h1>Countries Overview</h1>
+        </div>
+        <div>
+            <input type="text">
+            <button>Search</button>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="carousel_container">
+            <img onclick="prevSlide()" class="arrow_carousel" src="./assets/img/arrow_left.png">
+                <div id="display_countries_carousel">
+                </div>
+            <img onclick=" nextSlide()" class="arrow_carousel" src="./assets/img/arrow_right.png">
+        </div>
+    </div>
+    <footer>
+        <p>Created by Maike</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

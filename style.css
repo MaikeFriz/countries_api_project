@@ -1,0 +1,92 @@
+body{
+    background-color: rgb(75, 114, 101);
+    overflow-x: hidden;
+}
+h1{
+    color: rgb(75, 114, 101);
+}
+header{
+    height: 80px;
+    margin: 16px;
+    background-color: rgb(39, 64, 56);
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+footer{
+    height: 80px;
+    margin: 16px;
+    background-color: rgb(39, 64, 56);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    bottom: 0;
+}
+.logo_header{
+    height: 64px;
+    width: auto;
+}
+.title_div_header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+}
+.main{
+    height: auto;
+    margin: 0 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#display_countries_carousel {
+    display: flex;
+    width: 1300px;
+    gap: 24px;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.card_basic_infos{
+    width: 280px;
+    height: 400px;
+    background-color: rgb(39, 64, 56);
+    border: white 2px solid;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transform: scale(1);
+
+}
+
+.card_basic_infos:hover{
+    transform: scale(1.05);
+}
+
+.arrow_carousel{
+    height: 80px;
+    width: auto;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.arrow_carousel:hover{
+    transform: scale(1.15);
+}
+
+.carousel_container{
+    position: relative;
+    width: 1600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 16px;
+}
