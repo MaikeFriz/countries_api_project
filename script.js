@@ -34,21 +34,21 @@ function renderCountries() {
     for (let index = currentIndex; index < currentIndex + 3; index++) {
         if (index < allCountries.length) { // Sicherstellen, dass wir nicht über das Array hinausgehen
             let country = allCountries[index];
-            displayCountries.innerHTML += templateBasicInfosCountries(country);
+            displayCountries.innerHTML += templateBasicInfosCountries(country, index);
         }
     }
 }
 
 
-function templateBasicInfosCountries(country){
+function templateBasicInfosCountries(country, index){
     return `
-    <div class="card_basic_infos">
+    <div onclick="openOverlayCountryInfo(${index})" class="card_basic_infos">
         <h2>${country.name.common}</h2>
     </div>
     `
 }
 
-//next buttons -----
+//next buttons carousel -----
 function nextSlide() {
     if (currentIndex + 3 < allCountries.length) {
         currentIndex++;
@@ -68,4 +68,35 @@ function prevSlide() {
 }
 
 
+// open Overlay with country-infos -----
+function openOverlayCountryInfo(index){
+    let country = allCountries[index]; //muss ich hier nochmal definieren --spaeter nochmal nachvollziehen
+    let overlayBackground = document.getElementById("overlay_card_infos");
+    overlayBackground.classList.remove("d_none");
+    overlayBackground.innerHTML = templateDetailedInfosCountry(country);
+}
 
+function closeOverlayCountryInfo(){
+    let overlayBackground = document.getElementById("overlay_card_infos");
+    overlayBackground.classList.add("d_none"); 
+}
+
+function bubblingPreventionCardOverlay(event){
+    event.stopPropagation();
+}
+
+function templateDetailedInfosCountry(country, index){
+    return `
+    <div onclick="bubblingPreventionCardOverlay(event)" class="card_overlay_info">
+        <div class="title_section_overlay_card">
+            <h2>${country.name.common}</h2>
+        </div>
+        <div class="info_section_overlay_card">
+        </div>
+        <div class="arrow_section_overlay_card">
+            <img class="arrow_overlay_card" src="./assets/img/arrow_left.png">
+            <img class="arrow_overlay_card" src="./assets/img/arrow_right.png">
+        </div>
+    </div>
+    `
+}

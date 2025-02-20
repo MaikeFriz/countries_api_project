@@ -90,3 +90,50 @@ footer{
     flex-direction: row;
     padding: 0 16px;
 }
+
+.overlay_card_infos{
+    background-color: #071820ec;
+    min-height: 100%;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+
+.d_none{
+    display: none;
+}
+
+.card_overlay_info{
+    height: 500px;
+    width: 500px;
+    background-color: rgb(39, 64, 56);
+    border: white 2px solid;
+    border-radius: 25px;
+    color: white;
+    cursor: auto;
+}
+
+.arrow_overlay_card{
+    height: 40px;
+    width: auto;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.arrow_overlay_card:hover{
+    transform: scale(1.05);
+}
+
+.arrow_section_overlay_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+}
