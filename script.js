@@ -109,11 +109,18 @@ function bubblingPreventionCardOverlay(event){
 function templateDetailedInfosCountry(country, index){
     return `
     <div onclick="bubblingPreventionCardOverlay(event)" class="card_overlay_info">
+        <div class="info_section_overlay_card">
+            <p><strong>Region:</strong> ${country.region}</p>
+            <p><strong>Population:</strong> ${country.population}</p>
+            <p><strong>Continent:</strong> ${country.continents}</p>
+            <p><strong>Timezone(s):</strong> ${country.timezones.join(', ')}</p>
+            <p class="right_wrong_symbol_line"><strong>Independent:</strong> ${country.independent ? '<img class="right_wrong_symbol" src="./assets/img/right_symbol.png">' : '<img class="right_wrong_symbol" src="./assets/img/wrong_symbol.png">'} </p>
+            <p class="right_wrong_symbol_line"><strong>UN Member:</strong> ${country.unMember ? '<img class="right_wrong_symbol" src="./assets/img/right_symbol.png">' : '<img class="right_wrong_symbol" src="./assets/img/wrong_symbol.png">'}</p>
+            <p><strong>Latitude/Langitude:</strong> ${country.latlng}</p>
+        </div>
         <div class="title_section_overlay_card">
             <img class="flag_img_overlay" src="${country.flags.svg}">
             <h2>${country.name.common}</h2>
-        </div>
-        <div class="info_section_overlay_card">
         </div>
         <div class="arrow_section_overlay_card">
             <img onclick="prefCountryArrowCardOverlay(${index})" class="arrow_overlay_card" src="./assets/img/arrow_left.png">

@@ -136,6 +136,7 @@ footer{
     align-items: center;
     flex-direction: row;
     gap: 40px;
+    margin-top: 16px;
 }
 
 .flag_img{
@@ -185,4 +186,15 @@ footer{
 
 .info_section_card{
     padding: 0 16px;
+}
+
+.right_wrong_symbol{
+    height: 24px;
+    width: auto;
+}
+
+.info_section_overlay_card{
+    height: 350px;
+    padding: 0 16px;
+    text-align: center;
 }
