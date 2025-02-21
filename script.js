@@ -41,11 +41,32 @@ function renderCountries() {
 
 
 function templateBasicInfosCountries(country, index){
+    const osmUrl = country.maps.openStreetMaps;
+    const embedUrl = generateOSMEmbedURL(osmUrl);
     return `
     <div onclick="openOverlayCountryInfo(${index})" class="card_basic_infos">
-        <h2>${country.name.common}</h2>
+        <div class="title_section_card">
+            <img class="flag_img" src="${country.flags.svg}">
+            <h2>${country.name.common}</h2>
+        </div>
+        <div class="info_section_card">
+            <p><strong>Full Name:</strong> ${country.name.nativeName ? Object.values(country.name.nativeName)[0].official : "N/A"}</p>
+            <p><strong>Language:</strong> ${country.languages.eng}</p>
+            <p><strong>Capital City:</strong> ${country.capital}</p>
+        </div>
+        <div class="map_div">
+            ${embedUrl ? `<iframe class="map" src="${embedUrl}"></iframe>` : `<p>Map not available</p>`}
+        </div>
     </div>
     `
+}
+
+function generateOSMEmbedURL(osmUrl) {
+    const match = osmUrl.match(/relation\/(\d+)/);
+    if (match) {
+        return `https://www.openstreetmap.org/export/embed.html?relation=${match[1]}`;
+    }
+    return null;
 }
 
 //next buttons carousel -----
@@ -73,7 +94,7 @@ function openOverlayCountryInfo(index){
     let country = allCountries[index]; //muss ich hier nochmal definieren --spaeter nochmal nachvollziehen
     let overlayBackground = document.getElementById("overlay_card_infos");
     overlayBackground.classList.remove("d_none");
-    overlayBackground.innerHTML = templateDetailedInfosCountry(country);
+    overlayBackground.innerHTML = templateDetailedInfosCountry(country, index);
 }
 
 function closeOverlayCountryInfo(){
@@ -89,14 +110,27 @@ function templateDetailedInfosCountry(country, index){
     return `
     <div onclick="bubblingPreventionCardOverlay(event)" class="card_overlay_info">
         <div class="title_section_overlay_card">
+            <img class="flag_img_overlay" src="${country.flags.svg}">
             <h2>${country.name.common}</h2>
         </div>
         <div class="info_section_overlay_card">
         </div>
         <div class="arrow_section_overlay_card">
-            <img class="arrow_overlay_card" src="./assets/img/arrow_left.png">
-            <img class="arrow_overlay_card" src="./assets/img/arrow_right.png">
+            <img onclick="prefCountryArrowCardOverlay(${index})" class="arrow_overlay_card" src="./assets/img/arrow_left.png">
+            <img onclick="nextCountryArrowCardOverlay(${index})" class="arrow_overlay_card" src="./assets/img/arrow_right.png">
         </div>
     </div>
     `
+}
+
+//next buttons overlay card -----
+function nextCountryArrowCardOverlay(index){
+    index = (index + 1) % allCountries.length; //% ist Moduloperator um beim letzten Land wieder zum ersten zu springen weil z.B. (9+1)% 10 = 0 oder (4+1)%10 = 5 weil 5/10 ist Rest 5 (weil 10 nich in 5 passt)
+    openOverlayCountryInfo(index);            // % der Moduloperator schaut also welcher Rest zurueck bleibt
+}
+
+function prefCountryArrowCardOverlay(index){
+    index = (index - 1 + allCountries.length) % allCountries.length; // z.B. index = (4 - 1 + 10) % 10 = 3 oder index = (0 - 1 + 10) % 10 = 9
+    openOverlayCountryInfo(index);
+
 }

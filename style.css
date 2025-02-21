@@ -137,3 +137,52 @@ footer{
     flex-direction: row;
     gap: 40px;
 }
+
+.flag_img{
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+}
+
+.title_section_overlay_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.title_section_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.flag_img_overlay{
+    height: 56px;
+    width: auto;
+    border-radius: 5px;
+}
+
+.map{
+    height: 150px;
+    width: 230px;
+    bottom: 0;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 8px;
+}
+
+.map_div{
+    height: 200px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info_section_card{
+    padding: 0 16px;
+}
